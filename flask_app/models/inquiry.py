@@ -3,24 +3,23 @@ from flask_app.assets.regex import EMAIL_REGEX
 from flask_app.config.mysqlconnection import connectToMySQL
 # from flask_app.models import sighting
 
-class User:
-    db = 'seviins_studio'
-    db_table = 'users'
-    db_table_sndry = 'sightings'
+class Inquiry :
+    db = "seviins_studio"
+    db_table = 'inquiries'
     def __init__(self , db_data ):
         self.id = db_data['id']
         self.first_name = db_data['first_name']
         self.last_name = db_data['last_name']
-        self.email = db_data['email']
-        self.password = db_data['password']
-        self.posts = []
+        self.return_email_address = db_data['return_email_address']
+        self.subject = db_data['subject']
+        self.message = db_data['message']
         self.created_at = db_data['created_at']
         self.updated_at = db_data['updated_at']
     # **********************************************************************************************************************************
     # create*****************************************************************
     @classmethod
     def create( cls , data ):
-        query = "INSERT INTO " + cls.db_table + " ( first_name, last_name, email, password ) VALUES ( %(first_name)s, %(last_name)s, %(email)s, %(password)s );"
+        query = "INSERT INTO " + cls.db_table + " ( first_name, last_name, return_email_address, subject, message ) VALUES ( %(first_name)s, %(last_name)s, %(return_email_address)s, %(subject)s, %(message)s );"
         return connectToMySQL(cls.db).query_db( query, data)
     #**********************************************************************************************************************************
     #retreive*****************************************************************

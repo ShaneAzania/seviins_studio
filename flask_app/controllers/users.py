@@ -6,11 +6,6 @@ bcrypt = Bcrypt(app)
 
 site_title = 'Sasquatch Websighting'
 
-#Home
-@app.route('/')
-def index():
-    return render_template('index.html', title = site_title)
-
 #Register or Login
 @app.route('/register_login')
 def register_login():

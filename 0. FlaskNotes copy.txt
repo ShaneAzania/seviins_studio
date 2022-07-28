@@ -100,7 +100,9 @@ result = mysql.query_db(query, data)
 Bcrypt:
 
 
-pipenv install PyMySQL flask flask-bcrypt
+pipenv install PyMySQL flask flask-bcrypt libsass
+pip install libsass
+
 
 from flask_app import app
 from flask_bcrypt import Bcrypt
