@@ -20,9 +20,21 @@ def inquiry_form():
         'subject' : request.form['subject'],
         'message' : request.form['message']
     }
-
-    # print(first_name, last_name, return_email_address, subject, message)
-    Inquiry.create(data)
-
+    session['first_name'] = data['first_name']
+    session['last_name'] = data['last_name']
+    session['return_email_address'] = data['return_email_address']
+    session['subject'] = data['subject']
+    session['message'] = data['message']
+    print()
+    print('INQUIRY PROJECT TYPE / SUBJECT:',session['subject'])
+    print()
+    if Inquiry.validate_ninja_form(data):
+        session.pop('first_name')
+        session.pop('last_name')
+        session.pop('return_email_address')
+        session.pop('subject')
+        session.pop('message')
+        # print(first_name, last_name, return_email_address, subject, message)
+        Inquiry.create(data)
     return redirect('/')
 

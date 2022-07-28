@@ -1,4 +1,4 @@
-from flask import flash
+from flask import flash, session
 from flask_app.assets.regex import EMAIL_REGEX
 from flask_app.config.mysqlconnection import connectToMySQL
 # from flask_app.models import sighting
@@ -26,11 +26,17 @@ class Inquiry :
     @classmethod
     def get_all(cls):
         query = "SELECT * FROM " + cls.db_table + ";"
-        ninjas_from_db =  connectToMySQL(cls.db).query_db(query)
-        ninjas =[]
-        for x in ninjas_from_db:
-            ninjas.append(cls(x))
-        return ninjas
+        result =  connectToMySQL(cls.db).query_db(query)
+        all =[]
+        if result:
+            for x in result:
+                all.append(cls(x))
+            return all
+        else:
+            print()
+            print(f'Inquiry.get_all() NO ROWS IN DATABASE')
+            print()
+            return all
     @classmethod
     def get_one(cls, data):
         query = "SELECT * FROM " + cls.db_table + " WHERE id = %(id)s;"
@@ -38,24 +44,10 @@ class Inquiry :
         if result: 
             return cls(result[0])
         else:
-            print('Not in database')
+            print()
+            print(f'Inquiry.get_one( {data["id"]} ) IS NOT IN DATABASE')
+            print()
             return result
-    @classmethod
-    def get_by_email(cls, data):
-        query = "SELECT * FROM " + cls.db_table + " WHERE email = %(email)s;"
-        result = connectToMySQL(cls.db).query_db( query, data)
-
-        if len(result) < 1:
-            return False
-        else:
-            return cls(result[0])
-    #**********************************************************************************************************************************
-    #update*****************************************************************
-    # first_name last_name email password age dojo_id
-    @classmethod
-    def update(cls,data):
-        query = "UPDATE "+ cls.db_table +" SET first_name = '%(first_name)s', last_name = '%(last_name)s', email = '%(email)s', password = '%(password)s', updated_at = now() WHERE id = %(id)s;"
-        connectToMySQL(cls.db).query_db( query, data)
     #**********************************************************************************************************************************
     #delete*****************************************************************
     @classmethod
@@ -65,24 +57,26 @@ class Inquiry :
 
     def validate_ninja_form(data):
         valid = True
-        if len(data['first_name']) < 2:
+        if len(data['first_name']) < 3:
             valid = False
-            flash('First name must be at least 2 characters long.')
-        if len(data['last_name']) < 2:
+            flash('First name must be at least 3 characters long.')
+        if len(data['last_name']) < 3:
             valid = False
-            flash('Last name must be at least 2 characters long.')
-        if not EMAIL_REGEX.match(data['email']):
+            flash('Last name must be at least 3 characters long.')
+        if not EMAIL_REGEX.match(data['return_email_address']):
             valid = False
             flash('Please provide a valid email address (  example@email.com ).')
-        if len(data['password']) < 8:
+        if data['subject'] == "Website/Application Developement(Ecommerce)" or data['subject'] == "Website/Application Developement(Portfolio)" or data['subject'] == "Website/Application Developement(Blog)" or data['subject'] == "Website/Application Developement(Other)" or data['subject'] == "Photogrphy(Commercial/Business Purposes)" or data['subject'] == "Photogrphy(Portrait)" or data['subject'] == "Photogrphy(Event)" or data['subject'] == "Photography(Other)" or data['subject'] == "Video(Commercial/Business Purposes)" or data['subject'] == "Video(Behind The Scenes)" or data['subject'] == "Video(Documentary)" or data['subject'] == "Video(Interview)" or data['subject'] == "Video(Music Video)" or data['subject'] == "Video(Other)":
+            None
+        else:
             valid = False
-            flash('Password must be at least 8 characters long.')
-        if not data['password'] == data['password2']:
+            flash('Please select a project type.')
+        if len(data['message']) < 10:
             valid = False
-            flash('Passwords do not match.')
-        elif len(data['password']) < 4:
-            valid = False
-            flash('Please enter a longer password.')
+            flash('Please leave a detailed message.')
+
+        if valid:
+            flash('Message Sent. Thankyou!')
         return valid
 
 

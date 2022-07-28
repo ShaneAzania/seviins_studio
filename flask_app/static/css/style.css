@@ -17,6 +17,10 @@ nav{
     box-shadow: 0px 5px 5px var(--mint);
 }
 
+.errors{
+    color: var(--mint);
+}
+
 .btn-mint{
     background-color: var(--mint);
     border-color: var(--mint);
