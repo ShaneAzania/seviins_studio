@@ -1,2 +1,2 @@
 # seviins_studio
- The business owner's photography and web presence studio. Providing photographs, video, website and ecommerce solutions that intergrate with social media platforms like Facebook and Instagram.
+ The business owner's web presence, photography and video studio. Providing website/web-application, photographs, video solutions with an option that integrates with social media platforms like Facebook and Instagram.
