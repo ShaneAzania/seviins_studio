@@ -59,24 +59,37 @@ class Inquiry :
         valid = True
         if len(data['first_name']) < 3:
             valid = False
-            flash('First name must be at least 3 characters long.')
+            flash('First name must be at least 3 characters long.', 'first_name')
         if len(data['last_name']) < 3:
             valid = False
-            flash('Last name must be at least 3 characters long.')
+            flash('Last name must be at least 3 characters long.', 'last_name')
         if not EMAIL_REGEX.match(data['return_email_address']):
             valid = False
-            flash('Please provide a valid email address (  example@email.com ).')
+            flash('Please provide a valid email address (  example@email.com ).', 'return_email_address')
         if data['subject'] == "Website/Application Developement(Ecommerce)" or data['subject'] == "Website/Application Developement(Portfolio)" or data['subject'] == "Website/Application Developement(Blog)" or data['subject'] == "Website/Application Developement(Other)" or data['subject'] == "Photogrphy(Commercial/Business Purposes)" or data['subject'] == "Photogrphy(Portrait)" or data['subject'] == "Photogrphy(Event)" or data['subject'] == "Photography(Other)" or data['subject'] == "Video(Commercial/Business Purposes)" or data['subject'] == "Video(Behind The Scenes)" or data['subject'] == "Video(Documentary)" or data['subject'] == "Video(Interview)" or data['subject'] == "Video(Music Video)" or data['subject'] == "Video(Other)":
             None
         else:
             valid = False
-            flash('Please select a project type.')
+            flash('Please select a project type.', 'subject')
         if len(data['message']) < 10:
             valid = False
-            flash('Please leave a detailed message.')
+            flash('Please leave a detailed message.', 'message')
 
         if valid:
-            flash('Message Sent. Thankyou!')
+            flash('Message Sent. Thankyou!', 'success')
         return valid
-
+        '''
+        {% with messages = get_flashed_messages(category_filter=["error"]) %}
+        {% if messages %}
+        <div class="alert-message block-message error">
+        <a class="close" href="#">×</a>
+        <ul>
+            {%- for msg in messages %}
+            <li>{{ msg }}</li>
+            {% endfor -%}
+        </ul>
+        </div>
+        {% endif %}
+        {% endwith %}
+        '''
 

@@ -36,5 +36,5 @@ def inquiry_form():
         session.pop('message')
         # print(first_name, last_name, return_email_address, subject, message)
         Inquiry.create(data)
-    return redirect('/')
+    return redirect('/#nav')
 
