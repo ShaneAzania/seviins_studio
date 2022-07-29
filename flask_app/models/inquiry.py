@@ -55,7 +55,7 @@ class Inquiry :
         query = "DELETE FROM " + cls.db_table + " WHERE id = %(id)s;"
         return connectToMySQL(cls.db).query_db( query, data)
 
-    def validate_ninja_form(data):
+    def validate_form(data):
         valid = True
         if len(data['first_name']) < 3:
             valid = False
@@ -66,7 +66,7 @@ class Inquiry :
         if not EMAIL_REGEX.match(data['return_email_address']):
             valid = False
             flash('Please provide a valid email address (  example@email.com ).', 'return_email_address')
-        if data['subject'] == "Website/Application Developement(Ecommerce)" or data['subject'] == "Website/Application Developement(Portfolio)" or data['subject'] == "Website/Application Developement(Blog)" or data['subject'] == "Website/Application Developement(Other)" or data['subject'] == "Photogrphy(Commercial/Business Purposes)" or data['subject'] == "Photogrphy(Portrait)" or data['subject'] == "Photogrphy(Event)" or data['subject'] == "Photography(Other)" or data['subject'] == "Video(Commercial/Business Purposes)" or data['subject'] == "Video(Behind The Scenes)" or data['subject'] == "Video(Documentary)" or data['subject'] == "Video(Interview)" or data['subject'] == "Video(Music Video)" or data['subject'] == "Video(Other)":
+        if data['subject'] == "Website/Application Development(Ecommerce)" or data['subject'] == "Website/Application Development(Portfolio)" or data['subject'] == "Website/Application Development(Blog)" or data['subject'] == "Website/Application Development(Other)" or data['subject'] == "Photogrphy(Commercial/Business Purposes)" or data['subject'] == "Photogrphy(Portrait)" or data['subject'] == "Photogrphy(Event)" or data['subject'] == "Photography(Other)" or data['subject'] == "Video(Commercial/Business Purposes)" or data['subject'] == "Video(Behind The Scenes)" or data['subject'] == "Video(Documentary)" or data['subject'] == "Video(Interview)" or data['subject'] == "Video(Music Video)" or data['subject'] == "Video(Other)":
             None
         else:
             valid = False

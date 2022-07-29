@@ -28,7 +28,7 @@ def inquiry_form():
     print()
     print('INQUIRY PROJECT TYPE / SUBJECT:',session['subject'])
     print()
-    if Inquiry.validate_ninja_form(data):
+    if Inquiry.validate_form(data):
         session.pop('first_name')
         session.pop('last_name')
         session.pop('return_email_address')
