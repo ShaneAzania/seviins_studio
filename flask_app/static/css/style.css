@@ -1,6 +1,8 @@
 :root{
     --mint:  #46ffbb;
     --mint-toast:  #34ca93;
+    --bs-dark: #24272a;
+    --bs-secondary: #6c757d;
 }
 
 *{
@@ -51,28 +53,44 @@ nav{
 }
 
 /* INDEX */
-#index .hero, #index .inquire{
+#index #hero, #inquire{
     height: 100vh;
     background-size: cover;
     background-repeat: no-repeat;
 }
 /* hero section */
-#index .hero{
+#index #hero{
     background-image: url('../img/automotive/1-22-06-04-SSAD5152-ShaneAzania.jpg');
     background-position: 0% 40%;
 }
-#index .hero .row{
+#index #hero .row{
     background-color: rgba(0, 0, 0, .3);
 }
-#index .hero .arrow{
+#index #hero .arrow{
     color: var(--mint-toast);
     font-size: 2em;
 }
 /* inquiries section */
-#index .inquire{
+#index #inquire{
     background-image: url('../img/portraits/1-1-AZAN2847-ShotByShaneAzania-ShotByShaneAzania.jpeg');
     background-position: 0% 40%;
 }
-#index .inquire .row{
+#index #inquire .row{
     background-color: rgba(0, 0, 0, .5);
+}
+/* services section */
+#index #services{
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: url('../img/random/1-AZAN5022-ShotByShaneAzania.jpeg');
+    background-position: 0% 40%;
+}
+#services .row{
+    background-color: rgba(0, 0, 0, .5);
+    margin: 0;
+}
+#services .card{
+    margin-bottom: 1em;
+    /* background-color: rgba(45, 45, 45, 0.732); */
+    color: var(--bs-dark);
 }

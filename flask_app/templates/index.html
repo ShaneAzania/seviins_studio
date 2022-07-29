@@ -9,7 +9,7 @@
 		<title>{{title}}</title>
 	</head>
 	<body id="index">
-		<div class="hero container-fluid">
+		<div id="hero" class=" container-fluid">
 			<div class="row justify-content-center align-items-center text-light h-100 px-5">
 				<div class="col-1">
 					<a href="#nav" class="btn btn-outline-mint glow-all-mint rounded-0">ENTER</a>
@@ -26,7 +26,10 @@
 			  <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
 				<ul class="navbar-nav">
 					<li class="nav-item">
-						<a class="nav-link active" aria-current="page" href="/">Home</a>
+						<a class="nav-link active" aria-current="page" href="/#nav">Home</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link active" aria-current="page" href="/#services">Services</a>
 					</li>
 					<li class="nav-item">
 						{% if session['user_id'] %}
@@ -52,8 +55,8 @@
 			</div>
 		</nav>
 
-		<div class="inquire container-fluid">
-			<div class="row justify-content-center align-items-center text-light h-100 px-5">
+		<div id="inquire" class=" container-fluid">
+			<div class="row justify-content-center align-items-center text-light h-100 px-3">
 				<div class="intro col-12 col-lg-5">
 					<h1>seVIIn's Studio</h1>
 					<p>
@@ -159,6 +162,69 @@
 					</div>
 					<button type="submit" class="btn btn-mint btn-block rounded-0">Send</button>
 				</form>
+			</div>
+		</div>
+
+		<div id="services" class="container-fluid">
+			<div class="row gx-5 justify-content-center align-items-center text-light h-100 py-5 px-3">
+				<div class="col-12 col-lg-4">
+					<div class="card rounded-0">
+						<img src="../static/img/dev/AZAN8901.JPG" class="card-img-top rounded-0" alt="...">
+						<div class="card-body">
+						<h5 class="card-title">Website Development</h5>
+						<p class="card-text">
+							<ul>
+								<li>Ecommerce</li>
+								<li>Portfolio</li>
+								<li>Business</li>
+								<li>Blog</li>
+								<li>Integrating ecommerce listings between website, facebook and instagram</li>
+							</ul>
+						</p>
+						<!--p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p-->
+						</div>
+					</div>
+				</div>
+				<div class="col-12 col-lg-4">
+					<div class="card rounded-0">
+						<img src="../static/img/portraits/1-AZAN3193-ShotByShaneAzania.jpeg" class="card-img-top rounded-0" alt="...">
+						<div class="card-body">
+						<h5 class="card-title">Photography</h5>
+						<p class="card-text">
+							<ul>
+								<li>Commercial and Business</li>
+								<li>Portrait</li>
+								<li>Business</li>
+								<li>Fashion</li>
+								<li>Editorial</li>
+								<li>Automotive</li>
+								<li>Professional Headshsots</li>
+								<li>Events (Including Weddings)</li>
+							</ul>
+						</p>
+						<!--p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p-->
+						</div>
+					</div>
+				</div>
+				<div class="col-12 col-lg-4">
+					<div class="card rounded-0">
+						<img src="../static/img/portraits/1-22-05-25-PAZA2566-ShaneAzania.jpeg" class="card-img-top rounded-0" alt="...">
+						<div class="card-body">
+						<h5 class="card-title">Video</h5>
+						<p class="card-text">
+							<ul>
+								<li>Commercial and Business</li>
+								<li>Behind The Scenes</li>
+								<li>Documentary</li>
+								<li>Interview</li>
+								<li>Music Video</li>
+								<li>Events (Including Weddings)</li>
+							</ul>
+						</p>
+						<!--p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p-->
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 
